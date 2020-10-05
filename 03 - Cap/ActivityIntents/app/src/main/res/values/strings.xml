@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ActivityIntents</string>
+    <string name="main_button_toast">Clique aqui</string>
+    <string name="tela_2">Tela 2</string>
+    <string name="main_button_parcel">Parceable via Intent</string>
+    <string name="main_button_serializable">Serializable via Intent</string>
+    <string name="tela2_texto1">Nome: %1$s / Codigo: %2$d</string>
+    <string name="tela2_texto2">Nome: %1$s / Idade: %2$d</string>
+</resources>

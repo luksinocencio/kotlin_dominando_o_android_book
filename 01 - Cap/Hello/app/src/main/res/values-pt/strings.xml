@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Olá</string>
+    <string name="hello_world">Olá mundo!</string>
+    <string name="main_button_toast">Mostrar toast!</string>
+</resources>

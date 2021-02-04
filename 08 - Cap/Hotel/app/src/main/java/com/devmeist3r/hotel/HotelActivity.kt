@@ -9,12 +9,15 @@ import androidx.appcompat.widget.SearchView
 
 class HotelActivity: AppCompatActivity(),
   HotelListFragment.OnHotelClickListener,
+  HotelListFragment.OnHotelDeletedListener,
   SearchView.OnQueryTextListener,
-  MenuItem.OnActionExpandListener {
+  MenuItem.OnActionExpandListener,
+  HotelFormFragment.OnHotelSavedListener {
 
+
+  private var hotelSelected: Long = -1
   private var lastSearchTerm: String = ""
   private var searchView: SearchView? = null
-
   private val listFragment: HotelListFragment by lazy {
     supportFragmentManager.findFragmentById( R.id.fragmentList) as HotelListFragment
   }
@@ -26,16 +29,19 @@ class HotelActivity: AppCompatActivity(),
 
   override fun onSaveInstanceState(outState: Bundle) {
     super.onSaveInstanceState(outState)
+    outState?.putLong(EXTRA_HOTEL_ID_SELECTED, hotelSelected)
     outState?.putString(EXTRA_SEARCH_TERM, lastSearchTerm)
   }
 
   override fun onRestoreInstanceState(savedInstanceState: Bundle) {
     super.onRestoreInstanceState(savedInstanceState)
+    hotelSelected = savedInstanceState?.getLong(EXTRA_HOTEL_ID_SELECTED) ?: 0
     lastSearchTerm = savedInstanceState?.getString(EXTRA_SEARCH_TERM)?: ""
   }
 
   override fun onHotelClick(hotel: Hotel) {
     if (isTablet()) {
+      hotelSelected = hotel.id
       showDetailsFragment(hotel.id)
     } else {
       showDetailtsActivity(hotel.id)
@@ -109,6 +115,22 @@ class HotelActivity: AppCompatActivity(),
   companion object {
     const val EXTRA_SEARCH_TERM = "lastSearch"
     const val EXTRA_HOTEL_ID_SELECTED = "lastSelectedId"
+  }
+
+  override fun onHotelsDeleted(hotels: List<Hotel>) {
+    if (hotels.find { it.id == hotelSelected } != null) {
+      val fragment = supportFragmentManager.findFragmentByTag(HotelDetailsFragment.TAG_DETAILS)
+      if (fragment != null) {
+        supportFragmentManager
+          .beginTransaction()
+          .remove(fragment)
+          .commit()
+      }
+    }
+  }
+
+  override fun onHotelSaved(hotel: Hotel) {
+    listFragment.search(lastSearchTerm)
   }
 
 }

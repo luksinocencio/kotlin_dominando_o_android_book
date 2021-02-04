@@ -25,6 +25,12 @@ class HotelDetailsActivity : AppCompatActivity() {
       .commit()
   }
 
+  override fun getParentActivityIntent(): Intent? {
+    val it = super.getParentActivityIntent()
+    it?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+    return it
+  }
+
   companion object {
     private const val EXTRA_HOTEL_ID = "hotel_id"
     fun open(context: Context, hotelId: Long) {

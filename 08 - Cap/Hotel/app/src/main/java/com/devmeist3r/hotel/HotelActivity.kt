@@ -55,6 +55,11 @@ class HotelActivity: AppCompatActivity(),
       .commit()
   }
 
+  /**
+   *
+   * carregar as ações que aparecerão na action bar
+   *
+   * */
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
     menuInflater.inflate(R.menu.hotel, menu)
     val searchItem = menu?.findItem(R.id.action_search)
@@ -74,8 +79,9 @@ class HotelActivity: AppCompatActivity(),
   }
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
-    when(item?.itemId) {
+    when(item.itemId) {
       R.id.action_info -> AboutDialogFragment().show(supportFragmentManager, "sobre")
+      R.id.action_new -> HotelFormFragment.newInstance().open(supportFragmentManager)
     }
 
     return super.onOptionsItemSelected(item)

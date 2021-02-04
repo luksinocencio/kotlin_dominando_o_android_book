@@ -34,6 +34,7 @@ class HotelListPresenter(
         view.hideDeleteMode()
       } else {
         view.updateSelectionCountText(selectedItems.size)
+        view.showSelectedHotels(selectedItems)
       }
     } else {
       view.showHotelDetails(hotel)
@@ -73,10 +74,6 @@ class HotelListPresenter(
     callback(selectedItems)
     hideDeleteMode()
     view.showMessageHotelsDeleted(deletedItems.size)
-  }
-
-  fun showHotelDetails(hotel: Hotel) {
-    view.showHotelDetails(hotel)
   }
 
   fun undoDelete() {

@@ -17,6 +17,7 @@ class HotelListFragment : ListFragment(),
   AdapterView.OnItemLongClickListener,
   ActionMode.Callback {
 
+
   private val presenter = HotelListPresenter(this, MemoryRepository)
   private var actionMode: ActionMode? = null
 
@@ -141,4 +142,3 @@ class HotelListFragment : ListFragment(),
     fun onHotelClick(hotel: Hotel)
   }
 }
-

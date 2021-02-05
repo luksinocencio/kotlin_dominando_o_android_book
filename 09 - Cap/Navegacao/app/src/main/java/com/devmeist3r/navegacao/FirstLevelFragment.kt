@@ -15,8 +15,8 @@ class FirstLevelFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         actions.put(getString(R.string.option_tab), TabsActivity::class.java)
-//        actions.put(getString(R.string.option_bottom), BottomNavActivity::class.java)
-//        actions.put(getString(R.string.option_pager), PagerActivity::class.java)
+        actions.put(getString(R.string.option_bottom), BottomNavActivity::class.java)
+        actions.put(getString(R.string.option_pager), PagerActivity::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater,
@@ -34,6 +34,7 @@ class FirstLevelFragment : Fragment() {
         }
         textView.text = navigationType
     }
+
     companion object {
         private const val EXTRA_TYPE = "tipoNavegacao"
         fun newInstance(type: String): FirstLevelFragment {

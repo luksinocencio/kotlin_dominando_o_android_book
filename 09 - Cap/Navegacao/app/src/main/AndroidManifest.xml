@@ -10,10 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".PagerActivity"
+            android:label="PagerActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".BottomNavActivity"
+            android:label="@string/title_activity_bottom_nav"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".TabsActivity"
             android:label="@string/title_activity_tabs"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

@@ -1,8 +1,11 @@
-package com.devmeist3r.hotel
+package com.devmeist3r.hotel.list
+
+import com.devmeist3r.hotel.model.Hotel
+import com.devmeist3r.hotel.repository.memory.HotelRepository
 
 class HotelListPresenter(
-  private val view: HotelListView,
-  private val repository: HotelRepository
+    private val view: HotelListView,
+    private val repository: HotelRepository
 ) {
 
   private var lastTerm = ""

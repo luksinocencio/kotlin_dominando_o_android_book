@@ -1,9 +1,10 @@
-package com.devmeist3r.hotel
+package com.devmeist3r.hotel.details
 
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.devmeist3r.hotel.R
 
 class HotelDetailsActivity : AppCompatActivity() {
 

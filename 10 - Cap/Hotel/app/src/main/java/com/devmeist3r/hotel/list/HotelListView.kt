@@ -1,4 +1,6 @@
-package com.devmeist3r.hotel
+package com.devmeist3r.hotel.list
+
+import com.devmeist3r.hotel.model.Hotel
 
 interface HotelListView {
   fun showHotels(hotels: List<Hotel>)

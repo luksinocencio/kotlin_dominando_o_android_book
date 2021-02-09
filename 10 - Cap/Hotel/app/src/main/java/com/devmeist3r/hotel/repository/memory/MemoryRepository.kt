@@ -1,4 +1,6 @@
-package com.devmeist3r.hotel
+package com.devmeist3r.hotel.repository.memory
+
+import com.devmeist3r.hotel.model.Hotel
 
 object MemoryRepository : HotelRepository {
   private var nextId = 1L

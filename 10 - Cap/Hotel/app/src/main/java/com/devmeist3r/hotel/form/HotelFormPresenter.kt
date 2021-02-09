@@ -1,10 +1,13 @@
-package com.devmeist3r.hotel
+package com.devmeist3r.hotel.form
 
+import com.devmeist3r.hotel.model.Hotel
+import com.devmeist3r.hotel.repository.memory.HotelRepository
 import java.lang.Exception
 
 class HotelFormPresenter(
-  private val view: HotelFormView,
-  private val repository: HotelRepository) {
+    private val view: HotelFormView,
+    private val repository: HotelRepository
+) {
 
   private val validator = HotelValidator()
 

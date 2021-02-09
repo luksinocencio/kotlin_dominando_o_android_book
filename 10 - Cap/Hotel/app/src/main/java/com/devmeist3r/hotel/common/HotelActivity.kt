@@ -1,4 +1,4 @@
-package com.devmeist3r.hotel
+package com.devmeist3r.hotel.common
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,12 @@ import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
+import com.devmeist3r.hotel.*
+import com.devmeist3r.hotel.details.HotelDetailsActivity
+import com.devmeist3r.hotel.details.HotelDetailsFragment
+import com.devmeist3r.hotel.form.HotelFormFragment
+import com.devmeist3r.hotel.list.HotelListFragment
+import com.devmeist3r.hotel.model.Hotel
 import kotlinx.android.synthetic.main.activity_hotel.*
 
 class HotelActivity: AppCompatActivity(),

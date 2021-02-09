@@ -1,4 +1,6 @@
-package com.devmeist3r.hotel
+package com.devmeist3r.hotel.repository.memory
+
+import com.devmeist3r.hotel.model.Hotel
 
 interface HotelRepository {
     fun save(hotel: Hotel)

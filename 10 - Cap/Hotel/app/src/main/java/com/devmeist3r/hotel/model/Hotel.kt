@@ -1,4 +1,4 @@
-package com.devmeist3r.hotel
+package com.devmeist3r.hotel.model
 
 data class Hotel(
   var id: Long = 0,

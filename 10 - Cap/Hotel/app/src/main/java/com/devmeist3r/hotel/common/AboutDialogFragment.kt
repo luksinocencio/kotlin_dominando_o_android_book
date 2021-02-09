@@ -1,4 +1,4 @@
-package com.devmeist3r.hotel
+package com.devmeist3r.hotel.common
 
 import android.app.Dialog
 import android.content.DialogInterface
@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
+import com.devmeist3r.hotel.R
 
 class AboutDialogFragment : DialogFragment() {
   override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

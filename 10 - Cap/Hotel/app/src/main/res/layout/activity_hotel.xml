@@ -7,7 +7,7 @@
 
   <fragment android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:name="com.devmeist3r.hotel.HotelListFragment"
+    android:name="com.devmeist3r.hotel.list.HotelListFragment"
     android:id="@+id/fragmentList"/>
 
   <com.google.android.material.floatingactionbutton.FloatingActionButton

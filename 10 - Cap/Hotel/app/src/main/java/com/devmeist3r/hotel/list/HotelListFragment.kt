@@ -1,4 +1,4 @@
-package com.devmeist3r.hotel
+package com.devmeist3r.hotel.list
 
 import android.os.Bundle
 import android.view.Menu
@@ -10,10 +10,13 @@ import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ActionMode
 import androidx.fragment.app.ListFragment
+import com.devmeist3r.hotel.model.Hotel
+import com.devmeist3r.hotel.repository.memory.MemoryRepository
+import com.devmeist3r.hotel.R
 import com.google.android.material.snackbar.Snackbar
 
 class HotelListFragment : ListFragment(),
-  HotelListView,
+    HotelListView,
   AdapterView.OnItemLongClickListener,
   ActionMode.Callback {
 

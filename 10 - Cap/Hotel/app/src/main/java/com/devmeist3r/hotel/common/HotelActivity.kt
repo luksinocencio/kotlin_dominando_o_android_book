@@ -102,6 +102,11 @@ class HotelActivity: AppCompatActivity(),
 
   override fun onHotelSaved(hotel: Hotel) {
     listFragment.search(lastSearchTerm)
+    val detailsFragment = supportFragmentManager
+      .findFragmentByTag(HotelDetailsFragment.TAG_DETAILS) as? HotelDetailsFragment
+    if (detailsFragment != null && hotel.id == hotelIdSelected) {
+      showDetailsFragment(hotelIdSelected)
+    }
   }
 
   override fun onHotelsDeleted(hotels: List<Hotel>) {

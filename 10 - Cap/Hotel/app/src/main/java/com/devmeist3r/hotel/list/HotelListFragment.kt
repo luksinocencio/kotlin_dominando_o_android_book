@@ -14,14 +14,18 @@ import com.devmeist3r.hotel.model.Hotel
 import com.devmeist3r.hotel.repository.memory.MemoryRepository
 import com.devmeist3r.hotel.R
 import com.google.android.material.snackbar.Snackbar
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class HotelListFragment : ListFragment(),
     HotelListView,
   AdapterView.OnItemLongClickListener,
   ActionMode.Callback {
 
+  private val presenter: HotelListPresenter by inject {
+    parametersOf(this)
+  }
 
-  private val presenter = HotelListPresenter(this, MemoryRepository)
   private var actionMode: ActionMode? = null
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -32,7 +36,7 @@ class HotelListFragment : ListFragment(),
   }
 
   override fun showHotels(hotels: List<Hotel>) {
-    val adapter = ArrayAdapter<Hotel>(requireContext(), android.R.layout.simple_list_item_activated_1, hotels)
+    val adapter = HotelAdapter(requireContext(), hotels)
     listAdapter = adapter
   }
 

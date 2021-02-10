@@ -7,12 +7,18 @@ import androidx.appcompat.widget.ShareActionProvider
 import androidx.core.view.MenuItemCompat
 import androidx.fragment.app.Fragment
 import com.devmeist3r.hotel.model.Hotel
-import com.devmeist3r.hotel.repository.memory.MemoryRepository
 import com.devmeist3r.hotel.R
+import com.devmeist3r.hotel.form.HotelFormFragment
 import kotlinx.android.synthetic.main.fragment_hotel_details.*
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class HotelDetailsFragment: Fragment(), HotelDetailsView {
-  private val presenter = HotelDetailsPresenter(this, MemoryRepository)
+
+  private val presenter: HotelDetailsPresenter by inject {
+    parametersOf(this)
+  }
+
   private var hotel: Hotel? = null
   private var shareActionProvider : ShareActionProvider? = null
 
@@ -59,6 +65,15 @@ class HotelDetailsFragment: Fragment(), HotelDetailsView {
     txtName.text = getString(R.string.error_hotel_not_found)
     txtAddress.visibility = View.GONE
     rtbRating.visibility = View.GONE
+  }
+
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    if (item?.itemId == R.id.action_edit) {
+      HotelFormFragment
+        .newInstance(hotel?.id?:0)
+        .open(requireFragmentManager())
+    }
+    return super.onOptionsItemSelected(item)
   }
 
   companion object {

@@ -1,5 +1,7 @@
 package com.devmeist3r.hotel.common
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -34,6 +36,13 @@ class HotelActivity: AppCompatActivity(),
     fabAdd.setOnClickListener {
       listFragment.hideDeleteMode()
       HotelFormFragment.newInstance().open(supportFragmentManager)
+    }
+  }
+
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    super.onActivityResult(requestCode, resultCode, data)
+    if (requestCode == 0 && resultCode == Activity.RESULT_OK) {
+      listFragment.search(lastSearchTerm)
     }
   }
 

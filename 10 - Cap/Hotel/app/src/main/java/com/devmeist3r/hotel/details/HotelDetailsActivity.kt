@@ -1,12 +1,15 @@
 package com.devmeist3r.hotel.details
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.devmeist3r.hotel.R
+import com.devmeist3r.hotel.form.HotelFormFragment
+import com.devmeist3r.hotel.model.Hotel
 
-class HotelDetailsActivity : AppCompatActivity() {
+class HotelDetailsActivity : AppCompatActivity(), HotelFormFragment.OnHotelSavedListener {
 
   private val hotelId: Long by lazy { intent.getLongExtra(EXTRA_HOTEL_ID, -1) }
 
@@ -40,4 +43,16 @@ class HotelDetailsActivity : AppCompatActivity() {
       })
     }
   }
+
+  override fun onHotelSaved(hotel: Hotel) {
+    setResult(RESULT_OK)
+    showHotelDetailsFragment()
+  }
+
+  fun open(activity: Activity, hotelId: Long) {
+    activity.startActivityForResult(Intent(activity, HotelDetailsActivity::class.java).apply {
+      putExtra(EXTRA_HOTEL_ID, hotelId)
+    }, 0)
+  }
+
 }

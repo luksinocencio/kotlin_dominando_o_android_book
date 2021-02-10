@@ -10,12 +10,15 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.devmeist3r.hotel.model.Hotel
-import com.devmeist3r.hotel.repository.memory.MemoryRepository
 import com.devmeist3r.hotel.R
 import kotlinx.android.synthetic.main.fragment_hotel_form.*
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class HotelFormFragment: DialogFragment(), HotelFormView {
-  private val presenter = HotelFormPresenter(this, MemoryRepository)
+  private val presenter: HotelFormPresenter by inject {
+    parametersOf(this)
+  }
 
   override fun onCreateView(
     inflater: LayoutInflater,

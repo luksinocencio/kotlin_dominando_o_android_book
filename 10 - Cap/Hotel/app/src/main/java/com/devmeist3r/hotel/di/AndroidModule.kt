@@ -8,7 +8,8 @@ import com.devmeist3r.hotel.list.HotelListPresenter
 import com.devmeist3r.hotel.list.HotelListView
 import com.devmeist3r.hotel.repository.memory.HotelRepository
 import com.devmeist3r.hotel.repository.sqlite.SQLiteRepository
-import org.koin.dsl.module
+import org.koin.dsl.module.module
+
 
 val androidModule = module {
   single { this }

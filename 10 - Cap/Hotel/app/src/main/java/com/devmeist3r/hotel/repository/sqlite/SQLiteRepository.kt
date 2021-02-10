@@ -28,17 +28,11 @@ class SQLiteRepository(ctx: Context): HotelRepository {
   private fun update(hotel: Hotel) {
     val db = helper.writableDatabase
     val cv = ContentValues().apply {
-      put(COLUMN_ID, hotel.id)
       put(COLUMN_NAME, hotel.name)
       put(COLUMN_ADDRESS, hotel.address)
       put(COLUMN_RATING, hotel.rating)
     }
-    db.insertWithOnConflict(
-      TABLE_HOTEL,
-      null,
-      cv,
-      SQLiteDatabase.CONFLICT_REPLACE
-    )
+    db.update(TABLE_HOTEL, cv, "$COLUMN_ID = ?", arrayOf(hotel.id.toString()))
     db.close()
   }
 

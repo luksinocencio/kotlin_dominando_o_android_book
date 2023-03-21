@@ -57,4 +57,38 @@ class BooksListFragment: Fragment() {
         progressBar.visibility = if(show) View.VISIBLE else View.GONE
     }
 
+    private fun startDownloadJson() {
+        if (asyncTask?.status != AsyncTask.Status.RUNNING) {
+            asyncTask = BooksDownloadTask()
+            asyncTask?.execute()
+        }
+    }
+    private fun updateBookList(result: List<Book>?) {
+        if (result != null) {
+            booksList.clear()
+            booksList.addAll(result)
+        } else {
+            txtMessage.setText(R.string.error_load_books)
+        }
+
+        adapter?.notifyDataSetChanged()
+        asyncTask = null
+    }
+
+    inner class BooksDownloadTask: AsyncTask<Void, Void, List<Book>?>() {
+        override fun onPreExecute() {
+            super.onPreExecute()
+            showProgress(true)
+        }
+
+        override fun doInBackground(vararg p0: Void?): List<Book>? {
+            return BookHttp.loadBooks()
+        }
+
+        override fun onPostExecute(livros: List<Book>?) {
+            super.onPostExecute(livros)
+            showProgress(false)
+            updateBookList(livros)
+        }
+    }
 }

@@ -8,27 +8,24 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.item_book.view.imgCover
-import kotlinx.android.synthetic.main.item_book.view.txtAuthors
-import kotlinx.android.synthetic.main.item_book.view.txtPages
-import kotlinx.android.synthetic.main.item_book.view.txtTitle
-import kotlinx.android.synthetic.main.item_book.view.txtYear
+import kotlinx.android.synthetic.main.item_book.view.*
 
-class BookListAdapter(context: Context, books: List<Book>): ArrayAdapter<Book>(context, 0, books) {
+class BookListAdapter(context: Context, books: List<Book>)
+    : ArrayAdapter<Book>(context, 0, books) {
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val book = getItem(position)
         val holder: ViewHolder
         val view: View
-
         if (convertView == null) {
-            view = LayoutInflater.from(context).inflate(R.layout.item_book, parent, false)
+            view = LayoutInflater.from(context).inflate(
+                R.layout.item_book, parent, false)
             holder = ViewHolder(view)
             view.tag = holder
         } else {
             view = convertView
             holder = view.tag as ViewHolder
         }
-
         book?.let {
             Glide.with(context).load(book.coverUrl).into(holder.imgCapa)
             holder.txtTitulo.text = book.title
@@ -36,10 +33,8 @@ class BookListAdapter(context: Context, books: List<Book>): ArrayAdapter<Book>(c
             holder.txtAno.text = book.year.toString()
             holder.txtPaginas.text = context.getString(R.string.n_paginas, book.pages)
         }
-
-        return super.getView(position, convertView, parent)
+        return view
     }
-
     internal class ViewHolder(view: View) {
         var imgCapa: ImageView = view.imgCover
         var txtTitulo: TextView = view.txtTitle

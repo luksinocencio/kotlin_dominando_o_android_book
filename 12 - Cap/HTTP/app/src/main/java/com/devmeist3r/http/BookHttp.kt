@@ -13,7 +13,7 @@ import java.net.URL
 import java.nio.charset.Charset
 
 object BookHttp {
-    val BOOK_JSON_URL = "https://raw.githubusercontent.com/nglauber/"+"dominando_android3/livros_novatec.json"
+    val BOOK_JSON_URL = "https://raw.githubusercontent.com/nglauber/"+"dominando_android3/master/livros_novatec.json"
 
     @Throws(IOException::class)
     private fun connect(urlAddress: String): HttpURLConnection {
@@ -68,7 +68,7 @@ object BookHttp {
                 val book = Book(
                     jsonBook.getString("titulo"),
                     currentCategory,
-                    jsonBook.getString("author"),
+                    jsonBook.getString("autor"),
                     jsonBook.getInt("ano"),
                     jsonBook.getInt("paginas"),
                     jsonBook.getString("capa")
